@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,7 @@ SECRET_KEY = '2)ckb39)9&to43_h9^fz60)*40nit5n^8ni$gt$_65on_vn&ie'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,12 +78,20 @@ WSGI_APPLICATION = 'Grapes.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}
+}"""
+ DATABASES = {
+      'default' : {
+         'ENGINE' : 'django.db.backends.postgresql_psycopg2',
+         'NAME' : 'db_name',
+         #setear USERNAME Y PASS si necesitan.
+      }
+  } 
+
 
 
 # Password validation
@@ -127,3 +136,27 @@ STATIC_URL = '/static/'
 MEDIA_URL='/media/image/'
 CKEDITOR_UPLOAD_PATH="media/File/"
 CKEDITOR_CONFIGS = { 'default': { 'toolbar': None, }}
+
+
+
+
+
+
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+ 
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.8/howto/static-files/
+ 
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+ 
+STATIC_URL = '/static/'
+ 
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+os.path.join(BASE_DIR, 'static'),
+)
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
