@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-#import dj_database_url
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'Grapes.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'BACKEND': 'django.template.backends.django.DjangoTemplates/',
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -78,21 +78,25 @@ WSGI_APPLICATION = 'Grapes.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-"""DATABASES = {
+"""
+if bool(os.environ.get('LOCAL_DEV', False)): 
+  DATABASES = {
       'default' : {
          'ENGINE' : 'django.db.backends.postgresql_psycopg2',
          'NAME' : 'db_name',
          #setear USERNAME Y PASS si necesitan.
       }
   } 
-"""
+else: 
+  DATABASES = {
+      'default' : dj_database_url.config(default='postrgres://localhost')
+  }
 
 
 # Password validation
