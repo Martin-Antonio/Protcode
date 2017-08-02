@@ -78,20 +78,20 @@ WSGI_APPLICATION = 'Grapes.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-"""DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}"""
- DATABASES = {
+}
+ """DATABASES = {
       'default' : {
          'ENGINE' : 'django.db.backends.postgresql_psycopg2',
          'NAME' : 'db_name',
          #setear USERNAME Y PASS si necesitan.
       }
   } 
-
+"""
 
 
 # Password validation
