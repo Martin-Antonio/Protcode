@@ -103,7 +103,7 @@ class API_Tools(models.Model):
 
 
 
-class Developer1(models.Model):
+class Developer(models.Model):
 	Name = models.OneToOneField("Aplication_log",related_name="Aplication_log6",on_delete=models.CASCADE,primary_key=True)
 	Estate_opc =(("1","En desarrollo"),("2","En producción"),("3","Indefinido"),("4","Concluido"))
 	Estate = models.CharField(max_length=100,choices=Estate_opc)
