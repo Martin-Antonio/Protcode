@@ -41,7 +41,8 @@ INSTALLED_APPS = [
      'App.admin_app',
      'App.Developmet_group',
      'App.blog',
-     'ckeditor'
+     'ckeditor',
+     'gunicorn'
 ]
 
 MIDDLEWARE = [
