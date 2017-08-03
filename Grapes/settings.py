@@ -16,7 +16,14 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+ 
+STATICFILES_DIRS = (
+   os.path.join(BASE_DIR, 'static'),
+)
+- See more at: https://pythonbc.com/blog/instalar-un-proyecto-django-en-heroku/#sthash.z7LduydB.dpuf
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -78,7 +85,9 @@ WSGI_APPLICATION = 'Grapes.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
+DATABASES['default'] =  dj_database_url.config()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+- See more at: https://pythonbc.com/blog/instalar-un-proyecto-django-en-heroku/#sthash.z7LduydB.dpuf
 
 DATABASES = {
     'default': {
@@ -155,7 +164,7 @@ CKEDITOR_CONFIGS = { 'default': { 'toolbar': None, }}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-
+'''
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
