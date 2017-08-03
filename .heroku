@@ -1,0 +1,1 @@
+[ -f .heroku/collectstatic_disabled ] && DISABLE_COLLECTSTATIC=1
