@@ -92,10 +92,10 @@ DATABASES = {
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-'''DATABASES['default'] =  dj_database_url.config()
+DATABASES['default'] =  dj_database_url.config()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-
+'''
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
